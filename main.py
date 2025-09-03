@@ -27,6 +27,13 @@ def create_phone(phone: Phone):
 def get_phones():
     return phones_db
 
+@app.get("/phones/{identifier}", response_model=Phone)
+def get_phone_by_id(identifier: str):
+    for phone in phones_db:
+        if phone.identifier == identifier:
+            return phone
+    raise HTTPException(status_code=404, detail="Phone not found")
+
 
 
 
