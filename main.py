@@ -27,6 +27,10 @@ def create_phone(phone: Phone):
     phones_db.append(phone)
     return phone
 
+@app.get("/phones", response_model=List[Phone])
+def get_phones():
+    return phones_db
+
 
 
 
